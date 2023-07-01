@@ -1,0 +1,28 @@
+# -*- mode: sh;-*-
+############
+### make ###
+############
+
+
+### debug
+
+# remake is more user-friend (improved make)
+remake target
+
+# debug -n, --just-print, --dry-run, --recon
+# Print the commands that would be executed, but do not execute them.
+make -n target
+
+# validate tabs, etc. for errors like: Makefile:13: *** missing separator.  Stop.
+cat -e -t -v Makefile
+
+# export env var to all child processes
+# do not use quotes ("src") as they will be encoded literally
+export PYTHONPATH = src
+#
+# another approach with a magic target (no quotes again)
+.EXPORT_ALL_VARIABLES:
+
+MY_VAR_1 = foo
+MY_VAR_2 = bar
+MY_VAR_3 = baz
